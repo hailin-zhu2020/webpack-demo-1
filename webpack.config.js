@@ -1,9 +1,22 @@
-var path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { title } = require('process');
+
+const base = require('./webpack.config.base.js')
+
 module.exports = {
-    mode: 'development', //development 开发者 production 用户 
-    entry: './src/index.js', //入口 待转换的代码文件
-    output: {
-        filename: '[name].[contenthash].js'
-    } //出口 转化后的代码文件
+    ...base,
+    module: {
+        rules: [{
+            test: /\.css$/i,
+            use: ["style-loader", "css-loader"], //css结尾的文件用style-loader(将css代码包成style标签)和css-loader（读到js）
+        }, ],
+
+
+    },
+
+
+
 
 };
