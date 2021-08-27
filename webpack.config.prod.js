@@ -18,10 +18,13 @@ module.exports = {
 
     ], //自动生成index.html文件
     module: {
-        rules: [{
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, "css-loader"], //css代码抽成文件
-        }, ],
+        rules: [
+            ...base.module.rules,
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"], //css代码抽成文件
+            },
+        ],
 
 
     },

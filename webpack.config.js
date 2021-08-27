@@ -8,10 +8,13 @@ const base = require('./webpack.config.base.js')
 module.exports = {
     ...base,
     module: {
-        rules: [{
-            test: /\.css$/i,
-            use: ["style-loader", "css-loader"], //css结尾的文件用style-loader(将css代码包成style标签)和css-loader（读到js）
-        }, ],
+        rules: [
+            ...base.module.rules,
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"], //css结尾的文件用style-loader(将css代码包成style标签)和css-loader（读到js）
+            },
+        ],
 
 
     },
